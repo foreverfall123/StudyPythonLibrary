@@ -1,5 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip
+from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtCore import QCoreApplication
 
 class MyApp(QWidget):
 
@@ -9,9 +11,18 @@ class MyApp(QWidget):
 
 
     def initUI(self):
+        QToolTip.setFont(QFont('SansSerif', 10))
+        self.setToolTip('This is a <b>QWidget</b> widget')
+
+        btn = QPushButton('Quit', self)
+        btn.setToolTip('This is a <b>QPushButton</b> widget')
+        btn.move(50,50)
+        btn.resize(btn.sizeHint())
+        btn.clicked.connect(QCoreApplication.instance().quit)
+        
         self.setWindowTitle('my First Application')
-        self.move(300,300)
-        self.resize(400,200)
+        self.setWindowIcon(QIcon('web.png'))
+        self.setGeometry(300,300,300,200)
         self.show()
 
 

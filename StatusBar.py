@@ -21,7 +21,10 @@ class MyApp(QMainWindow):
         filemenu = menubar.addMenu('&File')
         filemenu.addAction(exitAction)
 
-        self.setWindowTitle('Menubar')
+        self.toolbar = self.addToolBar('Exit')
+        self.toolbar.addAction(exitAction)
+
+        self.setWindowTitle('Menubar&Toolbar')
         self.setGeometry(300,300,300,200)
         self.show()
 
